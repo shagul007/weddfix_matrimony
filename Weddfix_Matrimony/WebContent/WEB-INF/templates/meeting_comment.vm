@@ -1,0 +1,17 @@
+<html>
+<body>
+<p>
+    Dear $name,
+</p>
+<p>
+    $poster has added a comment on the meeting "$meeting":
+</p>
+<blockquote>
+    $body
+</blockquote>
+<p>
+    To view the details of the meeting and read all the comments, visit the
+    <a href="$url">meeting details</a>.
+</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.weddfix.web.formbean.HeightFormBean" table="height">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="feetInches" type="java.lang.String">
+            <column name="feetinches" />
+        </property>
+        <property name="feetInchesDesc" type="java.lang.String">
+            <column name="feetinchesdesc" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="isactive" />
+        </property>
+        <property name="createdBy" type="java.lang.Long">
+            <column name="createdby" />
+        </property>
+        <property name="createdDate" type="java.sql.Timestamp">
+            <column name="createddate" />
+        </property>
+        <property name="updatedBy" type="java.lang.Long">
+            <column name="updatedby" />
+        </property>
+        <property name="updatedDate" type="java.sql.Timestamp">
+            <column name="updateddate" />            
+        </property>       
+    </class>
+        
+</hibernate-mapping>

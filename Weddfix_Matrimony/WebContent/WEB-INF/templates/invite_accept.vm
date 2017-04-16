@@ -1,0 +1,18 @@
+<html>
+<body>
+<p>
+    Dear $firstName $lastName,
+</p>
+
+<p>
+    $name has accepted your invitation to join MyPhysio as a member of $corp.
+</p>
+
+<p>
+    Regards,
+    <br>
+    <br>
+    MyPhysio
+</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 Sep, 2013 3:23:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.weddfix.web.formbean.AttachmentFormBean" table="attachment">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="parentId" type="java.lang.Long">
+            <column name="parentid" />
+        </property>
+        <property name="fileName" type="java.lang.String">
+            <column name="filename" />
+        </property>
+        <property name="fileType" type="java.lang.String">
+            <column name="filetype" />
+        </property>
+        <property name="fileSize" type="java.lang.Long">
+            <column name="filesize" />
+        </property>
+        <property name="filePath" type="java.lang.String">
+            <column name="filepath" />
+        </property>
+        <property name="createdBy" type="java.lang.Long">
+            <column name="createdby" />
+        </property>
+        <property name="createdDate" type="java.util.Date">
+            <column name="createddate" />
+        </property>
+        <property name="updatedBy" type="java.lang.Long">
+            <column name="updatedby" />
+        </property>
+        <property name="updatedDate" type="java.util.Date">
+            <column name="updateddate" />
+        </property>
+    </class>
+</hibernate-mapping>

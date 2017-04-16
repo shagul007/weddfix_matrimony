@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2013 7:39:35 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.weddfix.web.formbean.PersonalDetailsFormBean" table="personaldetails">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="profileId" type="java.lang.Long">
+			<column name="profileid" />
+		</property>
+		<property name="userId" type="java.lang.Long">
+			<column name="userid" />
+		</property>
+		<property name="casteId" type="java.lang.Long">
+			<column name="casteid" />
+		</property>
+		<property name="subCaste" type="java.lang.String">
+			<column name="subcaste" />
+		</property>
+		<property name="motherTongueId" type="java.lang.Long">
+			<column name="mothertongueid" />
+		</property>
+		<property name="weightId" type="java.lang.Long">
+			<column name="weightid" />
+		</property>
+		<property name="bodyType" type="java.lang.String">
+			<column name="bodytype" />
+		</property>
+		<property name="complexion" type="java.lang.String">
+			<column name="complexion" />
+		</property>
+		<property name="physicalStatus" type="java.lang.String">
+			<column name="physicalstatus" />
+		</property>
+		<property name="employedIn" type="java.lang.String">
+			<column name="employedin" />
+		</property>
+		<property name="currencyId" type="java.lang.Long">
+			<column name="currencyid" />
+		</property>
+		<property name="monthlyIncome" type="java.lang.Long">
+			<column name="monthlyincome" />
+		</property>
+		<property name="food" type="java.lang.String">
+			<column name="food" />
+		</property>
+		<property name="smoking" type="java.lang.String">
+			<column name="smoking" />
+		</property>
+		<property name="drinking" type="java.lang.String">
+			<column name="drinking" />
+		</property>
+		<property name="familyStatus" type="java.lang.String">
+			<column name="familystatus" />
+		</property>
+		<property name="familyType" type="java.lang.String">
+			<column name="familytype" />
+		</property>
+		<property name="familyValues" type="java.lang.String">
+			<column name="familyvalues" />
+		</property>
+		<property name="fathersStatus" type="java.lang.String">
+			<column name="fathersstatus" />
+		</property>
+		<property name="mothersStatus" type="java.lang.String">
+			<column name="mothersstatus" />
+		</property>
+		<property name="numberOfBrothers" type="java.lang.String">
+			<column name="numberofbrothers" />
+		</property>
+		<property name="brothersMarried" type="java.lang.String">
+			<column name="brothersmarried" />
+		</property>
+		<property name="numberOfSisters" type="java.lang.String">
+			<column name="numberofsisters" />
+		</property>
+		<property name="sistersMarried" type="java.lang.String">
+			<column name="sistersmarried" />
+		</property>
+		<property name="statusId" type="java.lang.Long">
+			<column name="statusid" />
+		</property>
+		<property name="createdBy" type="java.lang.Long">
+			<column name="createdby" />
+		</property>
+		<property name="createdDate" type="java.util.Date">
+			<column name="createddate" />
+		</property>
+		<property name="updatedBy" type="java.lang.Long">
+			<column name="updatedby" />
+		</property>
+		<property name="updatedDate" type="java.util.Date">
+			<column name="updateddate" />
+		</property>
+	</class>
+</hibernate-mapping>

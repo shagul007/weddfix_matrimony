@@ -1,0 +1,21 @@
+<html>
+<body>
+<p>
+    Dear $name,
+</p>
+<p>
+    $poster has started a new topic at $siteName:
+</p>
+<p>
+<blockquote>
+    <b>$topic</b>
+    <br><br>
+    $body
+</blockquote>
+</p>
+<p>
+    To view the entire thread and to reply, please visit the
+    <a href="$url">discussion forum</a>.
+</p>
+</body>
+</html>

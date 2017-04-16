@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2013 7:39:35 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.weddfix.web.formbean.PartnerPreferenceFormBean" table="partnerpreference">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="profileId" type="java.lang.Long">
+			<column name="profileid" />
+		</property>
+		<property name="userId" type="java.lang.Long">
+			<column name="userid" />
+		</property>
+		<property name="fromAge" type="java.lang.Long">
+			<column name="fromage" />
+		</property>
+		<property name="toAge" type="java.lang.Long">
+			<column name="toage" />
+		</property>
+		<property name="maritalStatusId" type="java.lang.Long">
+			<column name="maritalstatusid" />
+		</property>
+		<property name="bodyType" type="java.lang.String">
+			<column name="bodytype" />
+		</property>
+		<property name="complexion" type="java.lang.String">
+			<column name="complexion" />
+		</property>
+		<property name="fromHeightId" type="java.lang.Long">
+			<column name="fromheightid" />
+		</property>
+		<property name="toHeightId" type="java.lang.Long">
+			<column name="toheightid" />
+		</property>
+		<property name="food" type="java.lang.String">
+			<column name="food" />
+		</property>
+		<property name="religionId" type="java.lang.Long">
+			<column name="religionid" />
+		</property>
+		<property name="casteId" type="java.lang.Long">
+			<column name="casteid" />
+		</property>
+		<property name="motherTongueId" type="java.lang.Long">
+			<column name="mothertongueid" />
+		</property>
+		<property name="educationId" type="java.lang.Long">
+			<column name="educationid" />
+		</property>
+		<property name="occupationId" type="java.lang.Long">
+			<column name="occupationid" />
+		</property>
+		<property name="countryId" type="java.lang.Long">
+			<column name="countryid" />
+		</property>
+		<property name="stateId" type="java.lang.Long">
+			<column name="stateid" />
+		</property>
+		<property name="cityId" type="java.lang.Long">
+			<column name="cityid" />
+		</property>
+		<property name="statusId" type="java.lang.Long">
+			<column name="statusid" />
+		</property>
+		<property name="createdBy" type="java.lang.Long">
+			<column name="createdby" />
+		</property>
+		<property name="createdDate" type="java.util.Date">
+			<column name="createddate" />
+		</property>
+		<property name="updatedBy" type="java.lang.Long">
+			<column name="updatedby" />
+		</property>
+		<property name="updatedDate" type="java.util.Date">
+			<column name="updateddate" />
+		</property>
+	</class>
+</hibernate-mapping>

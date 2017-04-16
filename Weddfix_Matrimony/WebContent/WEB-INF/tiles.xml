@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="baseLayout" template="/jsp-pages/common/baseLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/jsp-pages/common/header.jsp" />
+		<put-attribute name="menu" value="/jsp-pages/common/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/jsp-pages/common/footer.jsp" />
+	</definition>
+	
+	<definition name="popupLayout" template="/jsp-pages/common/baseLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="homePage" extends="baseLayout">
+		<put-attribute name="title" value="Welcome to Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/home.jsp" />
+	</definition>
+	
+	<definition name="matrimonyHomePage" extends="baseLayout">
+		<put-attribute name="title" value="Welcome to Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/matrimony_home.jsp" />
+	</definition>
+	
+	<definition name="myHomePage" extends="baseLayout">
+		<put-attribute name="title" value="My Home - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/my_home.jsp" />
+	</definition>
+	
+	<definition name="loginPage" extends="baseLayout">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/jsp-pages/public/login.jsp" />
+	</definition>
+	
+	<definition name="registeredSuccessfullyPage" extends="baseLayout">
+		<put-attribute name="title" value="Success - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/common/registered_successfully.jsp" />
+	</definition>
+	
+	<definition name="accountDetailsPage" extends="baseLayout">
+		<put-attribute name="title" value="Account Details - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/account_details.jsp" />
+	</definition>
+	
+	<definition name="privacySettingsPage" extends="baseLayout">
+		<put-attribute name="title" value="Account Details - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/privacy_settings.jsp" />
+	</definition>
+	
+	<definition name="changePasswordPage" extends="baseLayout">
+		<put-attribute name="title" value="Change Password - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/change_password.jsp" />
+	</definition>
+	
+	<definition name="profilePicturePage" extends="baseLayout">
+		<put-attribute name="title" value="Profile Picture - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/profile_picture.jsp" />
+	</definition>
+	
+	<definition name="registerPage" extends="baseLayout">
+		<put-attribute name="title" value="Register - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/register.jsp" />
+	</definition>
+	
+	<definition name="register2Page" extends="baseLayout">
+		<put-attribute name="title" value="Register2 - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/register2.jsp" />
+	</definition>
+	
+	<definition name="partnerPreferencePage" extends="baseLayout">
+		<put-attribute name="title" value="Partner Preference - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/partner_preference.jsp" />
+	</definition>
+	
+	<definition name="viewProfilePage" extends="baseLayout">
+		<put-attribute name="title" value="View Profile - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/view_profile.jsp" />
+	</definition>
+	
+	<definition name="newMatchesPage" extends="baseLayout">
+		<put-attribute name="title" value="New Matches - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/new_matches.jsp" />
+	</definition>
+	
+	<definition name="shortlistedProfilesPage" extends="baseLayout">
+		<put-attribute name="title" value="Shortlisted Profiles - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/shortlisted_profiles.jsp" />
+	</definition>
+	
+	<definition name="viewedProfilesPage" extends="baseLayout">
+		<put-attribute name="title" value="Viewed Profiles - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/viewed_profiles.jsp" />
+	</definition>
+	
+	<definition name="viewedAndNotContactedProfilesPage" extends="baseLayout">
+		<put-attribute name="title" value="Viewed &amp; Not Contacted Profiles - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/viewed_not_contacted_profiles.jsp" />
+	</definition>
+	
+	<definition name="recentlyViewedProfilesPage" extends="baseLayout">
+		<put-attribute name="title" value="Recently Viewed Profiles - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/recently_viewed_profiles.jsp" />
+	</definition>
+	
+	<definition name="inboxPage" extends="baseLayout">
+		<put-attribute name="title" value="Inbox - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/inbox.jsp" />
+	</definition>
+	
+	<definition name="acceptedPage" extends="baseLayout">
+		<put-attribute name="title" value="Accepted - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/accepted.jsp" />
+	</definition>
+	
+	<definition name="notInterestedPage" extends="baseLayout">
+		<put-attribute name="title" value="Not Interested - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/not_interested.jsp" />
+	</definition>
+	
+	<definition name="sentPage" extends="baseLayout">
+		<put-attribute name="title" value="Sent - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/sent.jsp" />
+	</definition>
+	
+	<definition name="searchPage" extends="baseLayout">
+		<put-attribute name="title" value="Search - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/search.jsp" />
+	</definition>
+	
+	<definition name="updatePartnerPreferencePage" extends="baseLayout">
+		<put-attribute name="title" value="Partner Preference - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/update_partner_preference.jsp" />
+	</definition>
+	
+	<definition name="updatePersonalDetailsPage" extends="baseLayout">
+		<put-attribute name="title" value="Personal Details - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/update_personal_details.jsp" />
+	</definition>
+	
+	<definition name="deactivateProfilePage" extends="baseLayout">
+		<put-attribute name="title" value="Deactivate Profile - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/deactivate_profile.jsp" />
+	</definition>
+	
+	<definition name="deleteProfilePage" extends="baseLayout">
+		<put-attribute name="title" value="Delete Profile - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/delete_profile.jsp" />
+	</definition>
+	
+	<definition name="faqPage" extends="baseLayout">
+		<put-attribute name="title" value="FAQ - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/faq.jsp" />
+	</definition>
+	
+	<definition name="successPage" extends="baseLayout">
+		<put-attribute name="title" value="Success - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/common/success.jsp" />
+	</definition>
+
+	<definition name="errorPage" extends="baseLayout">
+		<put-attribute name="title" value="Error - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/common/error.jsp" />
+	</definition>
+
+	<definition name="adminHomePage" extends="baseLayout">
+		<put-attribute name="title" value="Admin Home - Weddfix" />
+		<put-attribute name="menu" value="/jsp-pages/common/menu.jsp" />
+		<put-attribute name="body" value="/jsp-pages/admin/admin_home.jsp" />
+	</definition>
+
+	<definition name="contactPage" extends="baseLayout">
+		<put-attribute name="title" value="Contact Us - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/common/contact.jsp" />
+	</definition>
+	
+	<definition name="updateProfilePage" extends="baseLayout">
+		<put-attribute name="title" value="Update Profile - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/update_profile.jsp" />
+	</definition>
+	
+	<definition name="userRolePage" extends="baseLayout">
+		<put-attribute name="title" value="User Role Info - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/user_role_info.jsp" />
+	</definition>
+	
+	<definition name="forgotPasswordPage" extends="baseLayout">
+		<put-attribute name="title" value="Forgot Password - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/common/forgot_password.jsp" />
+	</definition>
+	
+	<definition name="resetPage" extends="baseLayout">
+		<put-attribute name="title" value="Reset Password - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/common/reset.jsp" />
+	</definition>
+	
+	<definition name="reset2Page" extends="baseLayout">
+		<put-attribute name="title" value="Reset Password - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/common/reset2.jsp" />
+	</definition>
+	
+	<!-- 		Admin Masters Start -->
+	<definition name="mastersHomePage" extends="baseLayout">
+		<put-attribute name="title" value="Masters Home - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/index.jsp" />
+	</definition>
+	
+	<definition name="profileMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Profile Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/profile_master.jsp" />
+	</definition>
+	
+	<definition name="genderMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Gender Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/gender_master.jsp" />
+	</definition>
+	
+	<definition name="religionMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Religion Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/religion_master.jsp" />
+	</definition>
+	
+	<definition name="motherTonqueMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Mother Tonque Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/mother_tonque_master.jsp" />
+	</definition>
+	
+	<definition name="organizationMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Organization Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/organization_master.jsp" />
+	</definition>
+	
+	<definition name="statusMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Status Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/status_master.jsp" />
+	</definition>
+	
+	<definition name="roleMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Role Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/role_master.jsp" />
+	</definition>
+
+	<definition name="maritalStatusMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Marital Status Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/marital_status_master.jsp" />
+	</definition>
+	
+	<definition name="heightMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Height Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/height_master.jsp" />
+	</definition>
+	
+	<definition name="weightMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Weight Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/weight_master.jsp" />
+	</definition>
+	
+	<definition name="educationMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Education Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/education_master.jsp" />
+	</definition>
+	
+	<definition name="occupationMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Occupation Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/occupation_master.jsp" />
+	</definition>
+	
+	<definition name="currencyMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Currency Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/currency_master.jsp" />
+	</definition>
+	
+	<definition name="countryMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Country Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/country_master.jsp" />
+	</definition>
+	
+	<definition name="stateMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="State Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/state_master.jsp" />
+	</definition>
+	
+	<definition name="cityMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="City Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/city_master.jsp" />
+	</definition>
+	
+	<definition name="casteMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Caste Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/caste_master.jsp" />
+	</definition>
+	
+	<definition name="upgradePlanMasterPage" extends="baseLayout">
+		<put-attribute name="title" value="Upgrade Plan Master - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/master/upgrade_plan_master.jsp" />
+	</definition>
+	
+	<!-- 		Admin Masters End -->
+	
+	<!-- 		Payment Actions Starts -->
+	
+	<definition name="upgradePage" extends="baseLayout">
+		<put-attribute name="title" value="Upgrade - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/upgrade.jsp" />
+	</definition>
+	
+	<definition name="paymentDetailsPage" extends="baseLayout">
+		<put-attribute name="title" value="Payment Details - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/subscription/payment_details.jsp" />
+	</definition>
+	
+	<definition name="promotionDetailsPage" extends="baseLayout">
+		<put-attribute name="title" value="Promotion Details - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/admin/promotion/index.jsp" />
+	</definition>
+	
+	<definition name="cartPage" extends="baseLayout">
+		<put-attribute name="title" value="Cart - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/subscription/cart.jsp" />
+	</definition>
+	
+	<definition name="paymentFailurePage" extends="baseLayout">
+		<put-attribute name="title" value="Payment Failed - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/subscription/payment_failure.jsp" />
+	</definition>
+	
+	<definition name="paymentSuccessPage" extends="baseLayout">
+		<put-attribute name="title" value="Payment Success - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/subscription/payment_success.jsp" />
+	</definition>
+	
+	<!-- 		Payment Actions End -->
+	
+	<definition name="verifyMobilePage" extends="baseLayout">
+		<put-attribute name="title" value="Verify Mobile - Weddfix" />
+		<put-attribute name="body" value="/jsp-pages/public/verify_mobile.jsp" />
+	</definition>
+	
+</tiles-definitions>

@@ -1,0 +1,20 @@
+<html>
+<body>
+<h1>New comment for $title</h1>
+<p>
+    Dear $firstName,
+</p>
+<p>
+    $author has posted a new comment for an article you subscribed to:
+</p>
+<blockquote>$comment</blockquote>
+<p>
+To view the article <a href="$url">click here</a>.
+</p>
+<p>
+You may also <a href="$unsub">unsubscribe</a> from these updates.
+</p>
+
+
+</body>
+</html>

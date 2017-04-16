@@ -1,0 +1,27 @@
+<html>
+<body>
+<p>
+    Dear Admin,
+</p>
+
+<p>
+    Subject: $subject
+</p>
+<p>
+    Name: $fullName
+</p>
+<p>
+    Email: $email
+</p>
+<p>
+    Comments: $comments
+</p>
+
+<p>
+    Regards,
+    <br>
+    <br>
+    <a href="mailto:$email">$fullName</a>
+</p>
+</body>
+</html>

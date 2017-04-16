@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 16, 2013 11:25:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.weddfix.web.formbean.UpgradePlanFormBean" table="upgradeplandetails">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="planName" type="java.lang.String">
+            <column name="planname" />
+        </property>
+         <property name="amount" type="java.lang.Long">
+            <column name="amount" />
+        </property>
+         <property name="validity" type="java.lang.Long">
+            <column name="validity" />
+        </property>
+         <property name="emailCount" type="java.lang.Long">
+            <column name="emailcount" />
+        </property>
+         <property name="mobileCount" type="java.lang.Long">
+            <column name="mobilecount" />
+        </property>
+         <property name="videoCallCount" type="java.lang.Long">
+            <column name="videocallcount" />
+        </property>
+        <property name="expressInterest" type="java.lang.Boolean">
+            <column name="expressinterest" />
+        </property>
+        <property name="profileHighlight" type="java.lang.Boolean">
+            <column name="profilehighlight" />
+        </property>
+        <property name="viewProfile" type="java.lang.Boolean">
+            <column name="viewprofile" />
+        </property>
+        <property name="protectPhoto" type="java.lang.Boolean">
+            <column name="protectphoto" />
+        </property>
+        <property name="getSMSAlert" type="java.lang.Boolean">
+            <column name="getsmsalert" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="isactive" />
+        </property>
+        <property name="createdBy" type="java.lang.Long">
+            <column name="createdby" />
+        </property>
+        <property name="createdDate" type="java.sql.Timestamp">
+            <column name="createddate" />
+        </property>
+        <property name="updatedBy" type="java.lang.Long">
+            <column name="updatedby" />
+        </property>
+        <property name="updatedDate" type="java.sql.Timestamp">
+            <column name="updateddate" />
+        </property>
+    </class>
+    
+    
+</hibernate-mapping>

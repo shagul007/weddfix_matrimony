@@ -1,0 +1,41 @@
+<html>
+<body>
+<p>
+    Dear Admin,
+</p>
+
+<p>
+    The <b>$imagename</b> image has been corrupted. $reason
+</p>
+<table>
+<tr>
+<td>
+    <b>Image Name:</b> $imagename
+</td>
+</tr>
+<tr>
+<td>
+    <b>Company:</b> $practicename
+</td>
+</tr>
+<tr>
+<td>
+    <b>Email:</b> $email
+</td>
+</tr>
+<tr>
+<td>
+    <b>Phone:</b> $phone
+</td>
+</tr>
+</table>
+
+
+<p>
+    Regards,
+    <br>
+    <br>
+    MyPhysio
+</p>
+</body>
+</html>

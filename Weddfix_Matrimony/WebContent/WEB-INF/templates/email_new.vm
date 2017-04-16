@@ -1,0 +1,25 @@
+<html>
+<body>
+<p>
+    Dear $firstName,
+</p>
+
+<p>
+    You have request to change your email to $email.
+</p>
+
+<p>
+    To verify you own this email address and complete the change, click the link below:
+</p>
+<p>
+    <a href="$url">Change my email address</a>
+</p>
+
+<p>
+    Regards,
+    <br>
+    <br>
+    MyPhysio
+</p>
+</body>
+</html>

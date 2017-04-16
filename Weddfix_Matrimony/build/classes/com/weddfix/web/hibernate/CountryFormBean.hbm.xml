@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 16, 2013 11:25:13 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.weddfix.web.formbean.CountryFormBean" table="country">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="countryCode" type="java.lang.String">
+            <column name="COUNTRYCODE" />
+        </property>
+        <property name="countryName" type="java.lang.String">
+            <column name="COUNTRYNAME" />
+        </property>
+        <property name="countryDesc" type="java.lang.String">
+            <column name="COUNTRYDESC" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="ISACTIVE" />
+        </property>
+        <property name="createdBy" type="java.lang.Long">
+            <column name="CREATEDBY" />
+        </property>
+        <property name="createdDate" type="java.sql.Timestamp">
+            <column name="CREATEDDATE" />
+        </property>
+        <property name="updatedBy" type="java.lang.Long">
+            <column name="UPDATEDBY" />
+        </property>
+        <property name="updatedDate" type="java.sql.Timestamp">
+            <column name="UPDATEDDATE" />
+        </property>
+    </class>
+    
+    
+</hibernate-mapping>

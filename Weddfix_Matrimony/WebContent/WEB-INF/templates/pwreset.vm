@@ -1,0 +1,25 @@
+<html>
+<body>
+<p>
+    Dear $fullName,
+</p>
+
+<p>
+    Someone, possibly you, has requested a password reset. If you didn't not request this, please ignore this email.
+</p>
+
+<p>
+    If you did, please use the link below to reset your password:
+</p>
+<p>
+    <a href="$url">Reset my password</a>
+</p>
+
+<p>
+    Regards,
+    <br>
+    <br>
+    Weddfix
+</p>
+</body>
+</html>

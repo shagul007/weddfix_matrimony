@@ -1,0 +1,26 @@
+<html>
+<body>
+<p>
+    Dear $name,
+</p>
+
+<p>
+    $firstName $lastName has invited you to join MyPhysio as a member of $corp.
+</p>
+
+<p>
+    To accept this invitation, click on the link below. You will be able to create a user account, or,
+    if you already have a MyPhysioApp account, sign in to add $corp to your list.
+</p>
+<p>
+    <a href="$url">Accept Invitation</a>
+</p>
+
+<p>
+    Regards,
+    <br>
+    <br>
+    MyPhysio
+</p>
+</body>
+</html>

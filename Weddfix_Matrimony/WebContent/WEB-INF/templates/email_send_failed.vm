@@ -1,0 +1,43 @@
+<html>
+<body>
+<p>
+    Dear $user,
+</p>
+
+<p>
+    The <b>$program</b> send failed to the following patient email address.
+</p>
+<table>
+<tr>
+<td>
+    <b>Practice Name:</b> $company
+</td>
+</tr>
+<tr>
+<td>
+    <b>Patient Name:</b> $patientname
+</td>
+</tr>
+<tr>
+<td>
+    <b>Email:</b> $email
+</td>
+</tr>
+<tr>
+<td>
+    <b>Phone:</b> $phone
+</td>
+</tr>
+</table>
+
+	<p>Please click the below link to update email address for this patient.</p>
+    <a href="$url" style="cursor: pointer; text-decoration: none;">Update Now</a>
+
+<p>
+    Regards,
+    <br>
+    <br>
+    MyPhysio
+</p>
+</body>
+</html>

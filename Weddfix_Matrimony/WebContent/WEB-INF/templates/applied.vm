@@ -1,0 +1,25 @@
+<html>
+<body>
+<p>
+    Dear $firstName,
+</p>
+
+<p>
+    Thank you very much for registering with MyPhysio.
+</p>
+
+<p>
+    Before you can use your account, you need to verify this email address by clicking on the following link:
+</p>
+<p>
+    <a href="$url">Verify my email address</a>
+</p>
+
+<p>
+    Regards,
+    <br>
+    <br>
+    MyPhysio
+</p>
+</body>
+</html>

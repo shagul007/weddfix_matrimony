@@ -1,0 +1,1060 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 5, 2013 3:13:29 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<sql-query name="getSequenceId">
+		<![CDATA[SELECT nextval(:seqName) as id]]>
+	</sql-query>
+
+	<sql-query name="getProfileMaster">
+		<![CDATA[SELECT id,profilename FROM profile ORDER BY profilename ASC]]>
+	</sql-query>
+
+	<sql-query name="getGenderMaster">
+		<![CDATA[SELECT id,gendername FROM gender ORDER BY gendername ASC]]>
+	</sql-query>
+	
+	<sql-query name="getGenderMasterById">
+		<![CDATA[SELECT id,gendername FROM gender WHERE id!=:genderId ORDER BY gendername ASC]]>
+	</sql-query>
+
+	<sql-query name="getReligionMaster">
+		<![CDATA[SELECT id,religionname FROM religion ORDER BY religionname ASC]]>
+	</sql-query>
+
+	<sql-query name="getMotherTonqueMaster">
+		<![CDATA[SELECT id,mothertonque FROM mothertonque ORDER BY mothertonque ASC]]>
+	</sql-query>
+
+	<sql-query name="getRoleMaster">
+		<![CDATA[SELECT id,rolename FROM role ORDER BY rolename ASC]]>
+	</sql-query>
+	
+	<sql-query name="getStatusMaster">
+		<![CDATA[SELECT id,statusname FROM status ORDER BY statusname ASC]]>
+	</sql-query>
+
+	<sql-query name="getOrgMaster">
+		<![CDATA[SELECT id,orgname FROM organization ORDER BY orgname ASC]]>
+	</sql-query>
+
+	<sql-query name="getMaritalStatusMaster">
+		<![CDATA[SELECT id,maritalstatusname FROM maritalstatus ORDER BY maritalstatusname ASC]]>
+	</sql-query>
+
+	<sql-query name="getHeightMaster">
+		<![CDATA[SELECT id,feetinches FROM height ORDER BY feetinches ASC]]>
+	</sql-query>
+
+	<sql-query name="getWeightMaster">
+		<![CDATA[SELECT id,weight FROM weight ORDER BY weight ASC]]>
+	</sql-query>
+
+	<sql-query name="getEducationMaster">
+		<![CDATA[SELECT id,education FROM education ORDER BY education ASC]]>
+	</sql-query>
+
+	<sql-query name="getOccupationMaster">
+		<![CDATA[SELECT id,occupation FROM occupation ORDER BY occupation ASC]]>
+	</sql-query>
+
+	<sql-query name="getCurrencyMaster">
+		<![CDATA[SELECT id,currency FROM currency ORDER BY currency ASC]]>
+	</sql-query>
+
+	<sql-query name="getCountryMaster">
+		<![CDATA[SELECT id,countryname FROM country ORDER BY countryname ASC]]>
+	</sql-query>
+	
+	<sql-query name="getStatesMaster">
+		<![CDATA[SELECT id,stateName FROM state ORDER BY stateName ASC]]>
+	</sql-query>
+	
+	<sql-query name="getStateMaster">
+		<![CDATA[SELECT id,stateName FROM state WHERE countryid =:countryId ORDER BY stateName ASC]]>
+	</sql-query>
+	
+	<sql-query name="getCityMaster">
+		<![CDATA[SELECT id,cityname FROM city WHERE stateid =:stateId ORDER BY cityname ASC]]>
+	</sql-query>
+	
+	<sql-query name="getCasteMaster">
+		<![CDATA[SELECT id,castename FROM caste WHERE religionid =:religionId ORDER BY castename ASC]]>
+	</sql-query>
+
+	<!-- <sql-query name="getAllEmails">
+		<![CDATA[SELECT array_to_string( array( SELECT email FROM userprofile ), ',' ) as emails]]>
+	</sql-query> -->
+	
+	<sql-query name="getAllEmails">
+		<![CDATA[SELECT email FROM userprofile]]>
+	</sql-query>
+	
+	<sql-query name="getPromotionDetailsByPromoCode">
+		<![CDATA[SELECT to_char(expires, 'DD-Mon-YYYY') as validity, discount FROM promotiondetails WHERE promocode =:promoCode]]>
+	</sql-query>
+
+	<sql-query name="getUserProfileByEmail">
+		<![CDATA[SELECT u.id, u.profileid, u.fullname, u.email, u.password, u.passwordhash, r.rolename, s.statusname, upd.planname, ad.deactivateprofiledays, ad.deactivatedprofiledate
+		, ad.activateprofiledate, ad.isprofileactive, ad.deleteprofilereason, ad.isprofiledeleted, ad.showmyprofilepicture, ad.showmymobilenumber, ad.showmyemailid
+		, ad.verifymobilenumber, ad.verifyemailid, ad.verifyedmobilenumber, ad.verifyedemailid, ad.emailcount, ad.mobilecount, ad.videocallcount, u.religionid, pp.id as partnerpreferenceid, cd.planid, u.mobile
+		, u.genderid
+			FROM userprofile u 
+			LEFT JOIN personaldetails pd ON pd.userid = u.id
+			LEFT JOIN partnerpreference pp ON pp.userid = u.id
+			LEFT JOIN roledetails rd ON rd.userid = u.id
+			LEFT JOIN accountdetails ad ON ad.userid = u.id
+			LEFT JOIN cartdetails cd ON cd.userid = u.id
+			LEFT JOIN upgradeplandetails upd ON upd.id = ad.accounttype
+			LEFT JOIN role r ON r.id = rd.roleid
+			JOIN status s ON s.id = u.statusid
+			WHERE email=:email]]>
+	</sql-query>
+	
+	<sql-query name="getPartnerPreferenceByUserId">
+		<![CDATA[SELECT id, profileid FROM partnerpreference WHERE userId=:userId]]>
+	</sql-query>
+	
+	<sql-query name="getMyPersonalDetailsByUserId">
+		<![CDATA[SELECT id, profileid FROM personaldetails WHERE userId=:userId]]>
+	</sql-query>
+	
+	<sql-query name="getUserProfileByUserId">
+		<![CDATA[SELECT u.id, u.profileid, u.fullname, u.email, u.password, u.passwordhash, r.rolename, s.statusname
+		FROM userprofile u 
+		JOIN roledetails rd ON rd.userid = u.id
+		JOIN role r ON r.id = rd.roleid
+		JOIN status s ON s.id = u.statusid
+		WHERE u.id=:userId]]>
+	</sql-query>
+
+	<sql-query name="getSubscriberByEmail">
+		<![CDATA[SELECT * FROM subscribers WHERE subscriberemail=:email AND statusid=:statusId]]>
+	</sql-query>
+	
+	<sql-query name="getMatchesDetailsByProfileIdAndUserId">
+		<![CDATA[SELECT * FROM matches WHERE profileid=:profileId AND userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="getMailBoxDetailsByProfileIdAndUserId">
+		<![CDATA[SELECT * FROM mailbox WHERE profileid=:profileId AND userid=:userId]]>
+	</sql-query>
+
+	<sql-query name="getUpgradePlanDetails">
+		<![CDATA[SELECT planName, amount, validity, emailCount, mobileCount, videoCallCount, expressInterest, profileHighlight, viewProfile, protectPhoto, getSMSAlert, id FROM upgradeplandetails WHERE planname != 'FREE' ORDER BY id DESC]]>
+	</sql-query>
+	
+	<sql-query name="getInboxDetailsByProfileId">
+		<![CDATA[SELECT u.id, u.fullname, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, e.education, o.occupation, pg.filename, m.accepted, m.notinterested, ad.showmyprofilepicture
+		FROM mailbox m 
+		JOIN userprofile u ON u.id = m.userid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.profileid =:profileId AND m.newmail = TRUE AND s.statusname = 'ACTIVE' ORDER BY m.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getAcceptedDetailsByProfileId">
+		<![CDATA[SELECT u.id, u.fullname, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, e.education, o.occupation, pg.filename, m.accepted, m.notinterested, ad.showmyprofilepicture
+		FROM mailbox m 
+		JOIN userprofile u ON u.profileid = m.profileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.userid =:userId AND m.accepted = TRUE AND s.statusname = 'ACTIVE' ORDER BY m.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNotInterestedDetailsByProfileId">
+		<![CDATA[SELECT u.id, u.fullname, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, e.education, o.occupation, pg.filename, m.accepted, m.notinterested, ad.showmyprofilepicture
+		FROM mailbox m 
+		JOIN userprofile u ON u.profileid = m.profileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.userid =:userId AND m.notinterested = TRUE AND s.statusname = 'ACTIVE' ORDER BY m.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getSentDetailsByUserId">
+		<![CDATA[SELECT u.id, u.fullname, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, e.education, o.occupation, pg.filename, ad.showmyprofilepicture
+		FROM matches m 
+		JOIN userprofile u ON u.profileid = m.profileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.userid =:userId AND m.sendmail = TRUE AND s.statusname = 'ACTIVE' ORDER BY m.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByAge">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN country c ON c.id = u.countryid
+		LEFT JOIN state st ON st.id = u.stateid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByReligion">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByCaste">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByMotherTongue">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByEducation">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByOccupation">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND o.occupation=:occupation AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByCountry">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN country c ON c.id = u.countryid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND o.occupation=:occupation AND c.countryname=:country AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByState">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN country c ON c.id = u.countryid
+		LEFT JOIN state st ON st.id = u.stateid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND o.occupation=:occupation AND c.countryname=:country AND st.statename=:state AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getSimilarPartnerPreferenceDetailsByCity">
+		<![CDATA[SELECT  u.id, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN country c ON c.id = u.countryid
+		LEFT JOIN state st ON st.id = u.stateid
+		LEFT JOIN city ct ON ct.id = u.cityid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND o.occupation=:occupation AND c.countryname=:country AND st.statename=:state AND ct.cityname=:city AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC LIMIT 4]]>
+	</sql-query>
+	
+	<sql-query name="getViewedProfilesByProfileId">
+		<![CDATA[SELECT u.id, u.fullname, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, e.education, o.occupation, pg.filename, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture 
+		, p.profilename, ms.maritalstatusname, u.aboutyou
+		FROM matches m 
+		JOIN userprofile u ON u.id = m.userid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.profileid =:profileId AND u.id !=1 AND m.whoviewedmyprofile = TRUE AND s.statusname = 'ACTIVE' AND ad.isprofileactive = TRUE ORDER BY m.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getViewedAndNotContactedProfilesByUserId">
+		<![CDATA[SELECT u.id, u.fullname, m.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM matches m 
+		JOIN userprofile u ON u.profileid = m.profileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN education e ON e.id = u.educationid
+		JOIN country c ON c.id = u.countryid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.userid =:userId AND m.viewedandnotcontacted = TRUE AND s.statusname = 'ACTIVE' AND ad.isprofileactive = TRUE ORDER BY m.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getRecentlyViewedProfilesByUserId">
+		<![CDATA[SELECT u.id, u.fullname, m.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM matches m 
+		JOIN userprofile u ON u.profileid = m.profileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN education e ON e.id = u.educationid
+		JOIN country c ON c.id = u.countryid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.userid =:userId AND m.recentlyviewedprofiles = TRUE AND s.statusname = 'ACTIVE' AND ad.isprofileactive = TRUE ORDER BY m.createddate DESC LIMIT 5]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByAge">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		LEFT JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN country c ON c.id = u.countryid
+		LEFT JOIN state st ON st.id = u.stateid
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:maritalStatus AND g.gendername !=:gender 
+		AND u.id !=:userId AND u.id !=1 AND s.statusname = 'ACTIVE' AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByReligion">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByCaste">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId 
+		JOIN profile p ON p.id = u.userprofileid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByMotherTongue">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByEducation">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByOccupation">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND o.occupation=:occupation AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByCountry">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN country c ON c.id = u.countryid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND o.occupation=:occupation AND c.countryname=:country AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByState">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN country c ON c.id = u.countryid
+		LEFT JOIN state st ON st.id = u.stateid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND o.occupation=:occupation AND c.countryname=:country AND st.statename=:state AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getNewMatchesDetailsByCity">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN height h ON h.id = u.heightid
+		LEFT JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN education e ON e.id = u.educationid
+		LEFT JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN country c ON c.id = u.countryid
+		LEFT JOIN state st ON st.id = u.stateid
+		LEFT JOIN city ct ON ct.id = u.cityid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=:fromHeightId AND  u.heightid <=:toHeightId AND ms.maritalstatusname =:marutalStatus AND g.gendername !=:gender 
+		AND s.statusname = 'ACTIVE' AND u.id !=:userId AND u.id !=1 AND r.religionname =:religion AND ca.castename =:caste AND mt.mothertonque=:motherTongue AND e.education=:education 
+		AND o.occupation=:occupation AND c.countryname=:country AND st.statename=:state AND ct.cityname=:city AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getSearchMatchesDetailsByAge">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, o.occupation, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN partnerpreference pp ON pp.userid =:userId
+		LEFT JOIN userprofile up ON up.id =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN country c ON c.id = u.countryid
+		JOIN state st ON st.id = u.stateid
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=pp.fromheightid AND u.heightid <=pp.toheightid AND ms.id =:maritalStatusId AND g.id =:genderId
+		AND s.statusname = 'ACTIVE' AND r.id = up.religionid AND u.id !=:userId AND u.id !=1 AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getSearchMatchesDetailsByAgeOrFilter">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, o.occupation, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN partnerpreference pp ON pp.userid =:userId
+		LEFT JOIN userprofile up ON up.id =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN country c ON c.id = u.countryid
+		JOIN state st ON st.id = u.stateid
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=pp.fromheightid AND  u.heightid <=pp.toheightid AND ms.id =:maritalStatusId AND g.id =:genderId
+		AND s.statusname = 'ACTIVE' AND c.id =:countryId AND st.id =:stateId AND r.id = up.religionid AND u.id !=:userId AND u.id !=1 AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getSearchMatchesDetailsByCountry">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, o.occupation, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN partnerpreference pp ON pp.userid =:userId
+		LEFT JOIN userprofile up ON up.id =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN country c ON c.id = u.countryid
+		JOIN state st ON st.id = u.stateid
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=pp.fromheightid AND  u.heightid <=pp.toheightid AND ms.id =:maritalStatusId AND g.id =:genderId
+		AND s.statusname = 'ACTIVE' AND c.id =:countryId AND r.id = up.religionid AND u.id !=:userId AND u.id !=1 AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getSearchMatchesDetailsByState">
+		<![CDATA[SELECT  u.id, u.fullname, u.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, o.occupation, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM userprofile u 
+		LEFT JOIN partnerpreference pp ON pp.userid =:userId
+		LEFT JOIN userprofile up ON up.id =:userId
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN country c ON c.id = u.countryid
+		JOIN state st ON st.id = u.stateid
+		LEFT JOIN matches m ON m.profileid = u.profileid AND m.userid =:userId
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE date_part('year', AGE(u.dob)) >=:fromAge AND date_part('year', AGE(u.dob)) <=:toAge AND u.heightid >=pp.fromheightid AND  u.heightid <=pp.toheightid AND ms.id =:maritalStatusId AND g.id =:genderId
+		AND s.statusname = 'ACTIVE' AND st.id =:stateId AND r.id = up.religionid AND u.id !=:userId AND u.id !=1 AND ad.isprofileactive = TRUE ORDER BY u.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getShortlistedProfileDetailsByUserId">
+		<![CDATA[SELECT u.id, u.fullname, m.profileid, p.profilename, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, ms.maritalstatusname, c.countryname, e.education, pg.filename, u.aboutyou, m.shortlistedprofiles, m.sendinterested, ad.showmyprofilepicture
+		FROM matches m 
+		JOIN userprofile u ON u.profileid = m.profileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN education e ON e.id = u.educationid
+		JOIN country c ON c.id = u.countryid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.userid =:userId AND m.shortlistedprofiles = TRUE AND s.statusname = 'ACTIVE' AND ad.isprofileactive = TRUE ORDER BY m.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getWhoViewedMyProfileDetailsByProfileId">
+		<![CDATA[SELECT m.userid, u.profileid, g.gendername, date_part('year',age(u.dob)) as age, h.feetinches, r.religionname, pg.filename, ad.showmyprofilepicture
+		FROM matches m 
+		JOIN userprofile u ON u.id = m.userid
+		JOIN gender g ON g.id = u.genderid
+		JOIN height h ON h.id = u.heightid
+		JOIN religion r ON r.id = u.religionid
+		LEFT JOIN photogallery pg ON pg.id = u.profilepictureid
+		LEFT JOIN accountdetails ad ON ad.userid = u.id
+		JOIN status s ON s.id = u.statusid
+		WHERE m.profileid =:profileId AND u.id !=1 AND m.whoviewedmyprofile = TRUE AND s.statusname = 'ACTIVE' AND ad.isprofileactive = TRUE ORDER BY m.createddate DESC LIMIT 4 ]]>
+	</sql-query>
+	
+	<sql-query name="getPersonalDetailsByUserId">
+		<![CDATA[SELECT u.profileid, p.profilename, u.fullname, g.gendername, ms.maritalstatusname, date_part('year',age(u.dob)) as age, to_char(u.dob, 'DD/MM/YYYY') as dob, u.email, u.mobile
+	, h.feetinches, e.education, o.occupation, r.religionname, c.countryname, st.statename, ct.cityname
+	, u.aboutyou, u.profilepictureid, ca.castename, pd.subcaste, mt.mothertonque, w.weight, pd.bodytype, pd.complexion, pd.physicalstatus
+	, pd.employedin, cu.currency, pd.monthlyincome, pd.food, pd.smoking, pd.drinking, pd.familystatus, pd.familytype, pd.familyvalues, pd.fathersstatus, pd.mothersstatus
+	, pd.numberofbrothers, pd.brothersmarried, pd.numberofsisters, pd.sistersmarried
+		FROM userprofile u 
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN religion r ON r.id = u.religionid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN country c ON c.id = u.countryid
+		JOIN state st ON st.id = u.stateid
+		JOIN city ct ON ct.id = u.cityid
+		JOIN height h ON h.id = u.heightid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		JOIN status s ON s.id = u.statusid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		LEFT JOIN weight w ON w.id = pd.weightid
+		LEFT JOIN currency cu ON cu.id = pd.currencyid
+		WHERE u.id=:userId and s.statusname = 'ACTIVE']]>
+	</sql-query>
+	
+	<sql-query name="getViewPersonalDetailsByUserId">
+		<![CDATA[SELECT p.profilename, u.fullname, g.gendername, date_part('year',age(u.dob)) as age, to_char(u.dob, 'DD/MM/YYYY') as dob, u.email, u.mobile, r.religionname, mt.mothertonque, u.profileid
+	, ms.maritalstatusname, ca.castename, c.countryname, st.statename, ct.cityname, h.feetinches, w.weight, pd.bodytype, pd.complexion, pd.physicalstatus, e.education, o.occupation
+	, pd.employedin, cu.currency, pd.monthlyincome, pd.food, pd.smoking, pd.drinking, pd.familystatus, pd.familytype, pd.familyvalues, u.aboutyou, u.profilepictureid, mb.accepted, mb.id, mb.notinterested
+	, pd.subcaste,  pd.fathersstatus, pd.mothersstatus, pd.numberofbrothers, pd.brothersmarried, pd.numberofsisters, pd.sistersmarried, ad.emailcount, ad.mobilecount, m.dontshowalreadyviewed
+		FROM userprofile u 
+		JOIN profile p ON p.id = u.userprofileid
+		JOIN gender g ON g.id = u.genderid
+		JOIN religion r ON r.id = u.religionid
+		LEFT JOIN personaldetails pd ON pd.userid = u.id
+		LEFT JOIN caste ca ON ca.id = pd.casteid
+		LEFT JOIN accountdetails ad ON ad.userid =:userId
+		LEFT JOIN mothertonque mt ON mt.id = pd.mothertongueid
+		JOIN maritalstatus ms ON ms.id = u.maritalstatusid
+		JOIN country c ON c.id = u.countryid
+		JOIN state st ON st.id = u.stateid
+		JOIN city ct ON ct.id = u.cityid
+		JOIN height h ON h.id = u.heightid
+		LEFT JOIN weight w ON w.id = pd.weightid
+		JOIN education e ON e.id = u.educationid
+		JOIN occupation o ON o.id = u.occupationid
+		LEFT JOIN currency cu ON cu.id = pd.currencyid
+		JOIN status s ON s.id = u.statusid
+		LEFT JOIN matches m ON m.userid =:userId AND m.profileid =:userProfileId
+		LEFT JOIN mailbox mb ON mb.userid =:userId AND mb.profileid =:userProfileId
+		WHERE u.id=:profileUserId and s.statusname = 'ACTIVE']]>
+	</sql-query>
+	
+	<sql-query name="getUpdatePersonalDetailsByUserId">
+		<![CDATA[SELECT pd.id, pd.casteid, pd.subcaste, pd.mothertongueid, pd.weightid, pd.bodytype, pd.complexion, pd.physicalstatus
+		, pd.employedin, pd.currencyid, pd.monthlyincome, pd.food, pd.smoking, pd.drinking, pd.familystatus, pd.familytype, pd.familyvalues
+		, pd.fathersstatus, pd.mothersstatus, pd.numberofbrothers, pd.brothersmarried, pd.numberofsisters, pd.sistersmarried, u.religionid
+		FROM personaldetails pd 
+		JOIN userprofile u ON u.id = pd.userid
+		JOIN status s ON s.id = pd.statusid
+		WHERE pd.userid=:userId and s.statusname = 'ACTIVE']]>
+	</sql-query>
+
+	<sql-query name="getPartnerPreferenceDetailsByUserId">
+		<![CDATA[SELECT  pp.fromage, pp.toage, ms.maritalstatusname, pp.bodytype, pp.complexion, h.feetinches as fromheight, pp.food, r.religionname, ca.castename, mt.mothertonque
+		, e.education, o.occupation, c.countryname, st.statename, ct.cityname, g.gendername, ht.feetinches as toheight, pp.fromheightid, pp.toheightid
+		FROM partnerpreference pp 
+		LEFT JOIN religion r ON r.id = pp.religionid
+		LEFT JOIN mothertonque mt ON mt.id = pp.mothertongueid
+	    JOIN maritalstatus ms ON ms.id = pp.maritalstatusid
+		LEFT JOIN userprofile u ON u.id = pp.userid
+		JOIN gender g ON g.id = u.genderid
+		LEFT JOIN caste ca ON ca.id = pp.casteid
+		LEFT JOIN country c ON c.id = pp.countryid
+		LEFT JOIN state st ON st.id = pp.stateid
+		LEFT JOIN city ct ON ct.id = pp.cityid
+		LEFT JOIN height h ON h.id = pp.fromheightid
+		LEFT JOIN height ht ON ht.id = pp.toheightid
+		LEFT JOIN education e ON e.id = pp.educationid
+		LEFT JOIN occupation o ON o.id = pp.occupationid
+		JOIN status s ON s.id = pp.statusid
+		WHERE pp.userid=:userId and s.statusname = 'ACTIVE']]>
+	</sql-query>
+	
+	<sql-query name="getUpdatePartnerPreferenceDetailsByUserId">
+		<![CDATA[SELECT  pp.id, pp.fromage, pp.toage, pp.maritalstatusid, pp.bodytype, pp.complexion, pp.fromheightid, pp.food, pp.religionid, pp.casteid, pp.mothertongueid
+		, pp.educationid, pp.occupationid, pp.countryid, pp.stateid, pp.cityid, pp.toheightid
+		FROM partnerpreference pp 
+		JOIN status s ON s.id = pp.statusid
+		WHERE pp.userid=:userId and s.statusname = 'ACTIVE']]>
+	</sql-query>
+	
+	<sql-query name="getPhotoGalleryInfoByUserId">
+		<![CDATA[SELECT * FROM photogallery WHERE createdby=:userId]]>
+	</sql-query>
+
+	<sql-query name="getProfilePicturesByUserId">
+		<![CDATA[SELECT pg.id, pg.phototype, pg.filename, ad.showmyprofilepicture FROM photogallery pg
+				JOIN userprofile u ON u.id = pg.createdby
+				JOIN accountdetails ad ON ad.id =:userId
+				WHERE pg.createdby=:userId AND pg.phototype =:profileId]]>
+	</sql-query>
+	
+	<sql-query name="getUserProfileById">
+		<![CDATA[SELECT * FROM userprofile WHERE id=:id]]>
+	</sql-query>
+
+	<sql-query name="getAllUserProfiles">
+		<![CDATA[SELECT u.id, u.fullname, u.email, u.mobile, u.roleid, u.statusid, r.rolename, s.statusname, u.profileid
+			FROM userprofile u
+			JOIN role r ON r.id = u.roleid
+			JOIN status s ON s.id = u.statusid]]>
+	</sql-query>
+	
+	<sql-query name="getAccountDetailsByUserId">
+		<![CDATA[SELECT ad.id, up.planname, up.amount, up.validity, to_char(ad.createddate, 'DD MM YYYY') as createddate, ad.emailcount, ad.mobilecount, ad.videocallcount, up.expressinterest, up.profilehighlight, up.viewprofile, up.protectphoto, up.getsmsalert
+			FROM accountdetails ad 
+			JOIN upgradeplandetails up ON up.id = ad.accounttype
+			WHERE ad.userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="getAccountDetailsEmailAndMobileCountByUserId">
+		<![CDATA[SELECT m.dontshowalreadyviewed, ad.emailcount, ad.mobilecount
+			FROM accountdetails ad 
+			LEFT JOIN matches m ON m.userid=:userId AND m.profileid=:profileId
+			WHERE ad.userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="getPromotionDetails">
+		<![CDATA[SELECT pd.id, pd.promocode, to_char(pd.expires, 'DD/MM/YYYY') as expires, pd.discount, pd.email, to_char(pd.sent, 'DD/MM/YYYY') as sent, pd.sentto, s.statusname
+			FROM promotiondetails pd
+			JOIN status s ON s.id = pd.statusid ORDER BY pd.createddate DESC]]>
+	</sql-query>
+	
+	<sql-query name="getPlanDetailsByPlanId">
+			<![CDATA[SELECT ud.emailcount, ud.mobilecount, ud.videocallcount
+				FROM upgradeplandetails ud
+				WHERE ud.id=:planId]]>
+	</sql-query>
+	
+	<sql-query name="getCartDetails">
+		<![CDATA[SELECT cd.id, cd.planid, ud.planname, cd.plantype, ud.amount, ud.validity, s.statusname
+			FROM cartdetails cd
+			JOIN upgradeplandetails ud ON ud.id = cd.planid
+			JOIN status s ON s.id = cd.statusid
+			WHERE cd.userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="validatePromoCode">
+		<![CDATA[SELECT pd.id, pd.promocode, to_char(pd.expires, 'YYYY-MM-DD') as expires, pd.discount, pd.email, pd.sent, s.statusname, pd.userid, pd.sentto
+			FROM promotiondetails pd
+			JOIN status s ON s.id = pd.statusid
+			WHERE promocode=:promoCode]]>
+	</sql-query>
+
+	<sql-query name="updateUserProfileDetailsById"> <![CDATA[update userprofile 
+		set userprofileid=:userProfileId, fullname=:fullName , genderid=:genderId, maritalstatusid=:maritalStatusId, dob=:dob, 
+		mobile=:mobile, heightid=:heightId, educationid=:educationId, occupationid=:occupationId, religionid=:religionId, cityid=:cityId,
+		stateid=:stateId, countryid=:countryId, aboutyou=:aboutYou, updatedby=:updatedBy, updateddate=:updatedDate WHERE 
+		id=:id]]> 
+	</sql-query>
+
+	<sql-query name="updateProfileId"> 
+		<![CDATA[update userprofile set profileid=:profileId WHERE id=:id]]> 
+	</sql-query>
+	
+	<sql-query name="updatePersonalDetailsById">
+         <![CDATA[update personaldetails set casteid=:casteId, subcaste=:subCaste, weightid=:weightId, bodytype=:bodyType, complexion=:complexion
+         , physicalstatus=:physicalStatus, employedin=:employedIn, currencyid=:currencyId, monthlyincome=:monthlyIncome, food=:food
+         , smoking=:smoking, drinking=:drinking, familystatus=:familyStatus, familytype=:familyType, familyvalues=:familyValues
+         , fathersstatus=:fathersStatus, mothersstatus=:mothersStatus, numberofbrothers=:numberOfBrothers, brothersmarried=:brothersMarried
+         , numberofsisters=:numberOfSisters, sistersmarried=:sistersMarried, updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+	
+	<sql-query name="updatePartnerPreferenceById">
+         <![CDATA[update partnerpreference set fromage =:fromAge, toage =:toAge, maritalstatusid=:maritalStatusId, bodytype=:bodyType, complexion=:complexion
+         , fromheightid=:fromHeightId, toheightid=:toHeightId, food =:food, religionid =:religionId, casteid=:casteId, mothertongueid =:motherTongueId, educationid=:educationId, occupationid=:occupationId
+         , countryid=:countryId, stateid=:stateId, cityid=:cityId, updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+
+	<sql-query name="updatePersonalDetailsByUserId">
+         <![CDATA[update userprofile set profilepictureid=:profilePictureId
+         , updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateReadMailByUserIdAndProfileId">
+         <![CDATA[update mailbox set read=:readMail
+         , updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId AND profileid =:profileId]]>
+	</sql-query>
+	
+	<sql-query name="updateAcceptedMailByUserIdAndProfileId">
+         <![CDATA[update mailbox set accepted=:accepted
+         , updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId AND profileid =:profileId]]>
+	</sql-query>
+	
+	<sql-query name="updateNotInterestedProfileByUserIdAndProfileId">
+         <![CDATA[update mailbox set notinterested=:notInterested
+         , updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId AND profileid =:profileId]]>
+	</sql-query>
+	
+	<sql-query name="updatePhotoGalleryById">
+         <![CDATA[update photogallery set orgid=:orgId,
+          updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+	
+	<sql-query name="updateProfilePictureById">
+         <![CDATA[update photogallery set filename=:fileName
+         ,filetype=:fileType, filesize=:fileSize, filepath=:filePath
+         ,updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+
+	<sql-query name="updateUserRoleAndStatusById">
+         <![CDATA[update userprofile set roleid=:roleId, statusid=:statusId,
+          updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+	
+	<sql-query name="updateIsProfileDeletedByUserId">
+         <![CDATA[update accountdetails set isprofiledeleted=:isProfileDeleted,
+          updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateRoleDetailsByUserId">
+         <![CDATA[update roledetails set roleid=:roleId, description=:description,
+          updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateUserProfileInActiveByUserId">
+         <![CDATA[update userprofile set statusid=:statusId,
+          updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateMatchesWhoViewedMyProfileById">
+         <![CDATA[update matches set newmatches =:newMatches, whoviewedmyprofile =:whoViewedMyProfile, recentlyviewedprofiles =:recentlyViewedProfiles
+         , updatedby =:updatedBy, updateddate =:updatedDate WHERE id =:id]]>
+	</sql-query>
+	
+	<sql-query name="updateMatchesShortlistedById">
+         <![CDATA[update matches set shortlistedprofiles=:shortlisted, 
+          updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+	
+	<sql-query name="updateMatchesSendInterestedById">
+         <![CDATA[update matches set viewedandnotcontacted=:viewedAndNotContacted, sendmail=:sendMail, sendinterested=:sendInterested, 
+          updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+
+	<sql-query name="getUserIdByResetKey">
+		<![CDATA[select * from pwreset where resetkey=:resetKey]]>
+	</sql-query>
+
+	<sql-query name="deletePwResetByUserId">
+		<![CDATA[delete from pwreset where userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="deletePromotionById">
+		<![CDATA[delete from promotiondetails where id=:id]]>
+	</sql-query>
+	
+	<sql-query name="deleteCartDetailsByUserId">
+		<![CDATA[delete from cartdetails where userid=:userId]]>
+	</sql-query>
+
+	<sql-query name="updateResetPasswordById">
+		<![CDATA[update userprofile set password=:password, passwordhash=:passwordHash, updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+	
+	<sql-query name="updateDeactivateProfileByUserId">
+		<![CDATA[update accountdetails set deactivateprofiledays=:deactivateProfileDays, deactivatedprofiledate=:deactivatedProfileDate, activateprofiledate=:activateProfileDate, isprofileactive=:isProfileActive, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateActivateProfileByUserId">
+		<![CDATA[update accountdetails set isprofileactive=:isProfileActive, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateDeleteProfileByUserId">
+		<![CDATA[update accountdetails set deleteprofilereason=:deleteProfileReason, isprofiledeleted=:isProfileDeleted, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updatePrivacySettingsByUserId">
+		<![CDATA[update accountdetails set showmyprofilepicture=:showmyProfilepicture, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updatePromoDetailsByPromoCode">
+		<![CDATA[update promotiondetails set email=:emailTo, sent=:sentDate, updatedby=:updatedBy, updateddate=:updatedDate WHERE promocode=:promoCode]]>
+	</sql-query>
+	
+	<sql-query name="updateAcceptedPromoDetailsByUserId">
+		<![CDATA[update promotiondetails set userid=:userId, profileid=:profileId, accepted=:acceptedDate, updatedby=:updatedBy, updateddate=:updatedDate WHERE promocode=:acceptedPromoCode]]>
+	</sql-query>
+	
+	<sql-query name="updateCartDetailsById">
+		<![CDATA[update cartdetails set planid=:planId, updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:id]]>
+	</sql-query>
+	
+	<sql-query name="updateAccountDetailsByUserId">
+		<![CDATA[update accountdetails set accounttype=:accountType, emailcount=:emailCount, mobilecount=:mobileCount, videocallcount=:videocallCount
+		, transactionid=:txnId, transactionstatus=:txnStatus, createddate=:createdDate, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateEmailAndMobileCountByUserId">
+		<![CDATA[update accountdetails set emailcount=:emailCount, mobilecount=:mobileCount, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateMatchesViewedByUserId">
+		<![CDATA[update matches set dontshowalreadyviewed=:dontshowalreadyviewed, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId AND profileid=:profileId]]>
+	</sql-query>
+	
+	<sql-query name="updateMobileVerificationCodeByUserId">
+		<![CDATA[update accountdetails set verifymobilenumber=:verifyCode, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="verifyCodeAndUpdateMobileByUserId">
+		<![CDATA[update userprofile set mobile=:mobile, updatedby=:updatedBy, updateddate=:updatedDate WHERE id=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateVerifyedMobileNumberByUserId">
+		<![CDATA[update accountdetails set verifyedmobilenumber=:verifyedMobileNumber, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+	<sql-query name="updateMobileVerificationCodeDetailsByUserId">
+		<![CDATA[update accountdetails set verifymobilenumber=:verifyCode, verifyedmobilenumber=:verifyedMobileNumber, updatedby=:updatedBy, updateddate=:updatedDate WHERE userid=:userId]]>
+	</sql-query>
+	
+</hibernate-mapping>

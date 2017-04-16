@@ -1,0 +1,83 @@
+<html>
+<body>
+<div id=":1mh" class="ii gt m14d8a3d453c062de adP adO"><div id=":1mg" class="a3s" style="overflow: hidden;"><u></u>
+<div>
+<div style="width:680px;margin:0 auto;text-align:left;padding:0">
+<h1 style="font-size:30px;margin-bottom:0">MyPhysio App</h1>
+<h2 style="margin-top:0;color:#999;font-weight:normal">Order $no</h2>
+</div>
+<div style="width:600px;margin:0 auto;text-align:left;background:white;padding:40px">
+
+<div>
+<div>
+<table style="clear:both">
+<tbody><tr>
+<th style="text-align:left">Order Num:</th>
+<td>$no</td>
+</tr>
+<tr>
+<th style="text-align:left">Order Date:</th>
+<td>$orderdate</td>
+</tr>
+<tr>
+<th style="text-align:left">Company:</th>
+<td>$company</td>
+</tr>
+<tr>
+<th style="text-align:left">Billed To:</th>
+<td>$billedto</td>
+</tr>
+<tr>
+<th style="text-align:left">Transaction:</th>
+<td>$transactionno (<strong>Paid</strong>)</td>
+</tr>
+</tbody></table>
+<table style="clear:both;width:100%"><tbody><tr>
+<td style="vertical-align:top"><fieldset style="border:none;border-top:1px solid #dadada;margin:20px 40px 20px 0">
+<legend style="display:block;font-weight:bold;color:#999">Billed to</legend>
+	<address style="font-style:normal">
+	<big>$billedto</big><br>
+	$address1<br>
+	$address2<br>
+	$city, $state $pincode<br>
+	$country</address>
+</fieldset></td>
+</tr></tbody></table>
+<table style="clear:both;width:100%;overflow:hidden;border:none">
+<thead><tr>
+<th scope="col" style="font-weight:bold;text-align:left;width:50%">Items Ordered</th>
+		<th scope="col" style="font-weight:bold;text-align:left">Quantity</th>
+		<th scope="col" style="font-weight:bold;text-align:right">Item Price</th>
+		<th scope="col" style="font-weight:bold;text-align:right">Item Total</th>
+	</tr></thead>
+<tbody><tr>
+<td style="border:none">$itemname<br>
+</td>
+			<td style="border:none">1</td>
+			<td style="border:none;text-align:right">$$total</td>
+			<td style="border:none;text-align:right">$$total</td>
+		</tr>
+<tr>
+<th scope="row" colspan="3" style="font-weight:bold;text-align:right;padding:10px 0 0 0">Subtotal</th>
+		<td style="border:none;text-align:right;padding:10px 0 0 0">$$price</td>
+	</tr>
+<tr>
+<th scope="row" colspan="3" style="font-weight:bold;text-align:right;padding:10px 0 0 0">Tax</th>
+		<td style="border:none;text-align:right;padding:10px 0 0 0">$$tax</td>
+	</tr>
+<tr>
+<th scope="row" colspan="3" style="font-weight:bold;text-align:right;padding:10px 0 0 0">Total</th>
+		<td style="border:none;text-align:right;padding:10px 0 0 0">$$total</td>
+	</tr>
+</tbody></table><div class="yj6qo"></div><div class="adL">
+</div></div><div class="adL">
+</div></div><div class="adL">
+
+</div></div><div class="adL">
+
+</div></div><div class="adL">
+
+
+</div></div></div>
+</body>
+</html>

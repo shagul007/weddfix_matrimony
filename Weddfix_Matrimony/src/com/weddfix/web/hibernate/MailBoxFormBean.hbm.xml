@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2013 7:39:35 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.weddfix.web.formbean.MailBoxFormBean" table="mailbox">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="profileId" type="java.lang.Long">
+			<column name="profileid" />
+		</property>
+		<property name="userId" type="java.lang.Long">
+			<column name="userid" />
+		</property>
+		<property name="inbox" type="java.lang.Boolean">
+			<column name="inbox" />
+		</property>
+		<property name="newMail" type="java.lang.Boolean">
+			<column name="newmail" />
+		</property>
+		<property name="read" type="java.lang.Boolean">
+			<column name="read" />
+		</property>
+		<property name="accepted" type="java.lang.Boolean">
+			<column name="accepted" />
+		</property>
+		<property name="notInterested" type="java.lang.Boolean">
+			<column name="notinterested" />
+		</property>
+		<property name="createdBy" type="java.lang.Long">
+			<column name="createdby" />
+		</property>
+		<property name="createdDate" type="java.util.Date">
+			<column name="createddate" />
+		</property>
+		<property name="updatedBy" type="java.lang.Long">
+			<column name="updatedby" />
+		</property>
+		<property name="updatedDate" type="java.util.Date">
+			<column name="updateddate" />
+		</property>
+	</class>
+</hibernate-mapping>

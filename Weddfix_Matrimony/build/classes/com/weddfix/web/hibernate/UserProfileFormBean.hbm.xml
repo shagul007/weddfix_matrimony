@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2013 7:39:35 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.weddfix.web.formbean.UserProfileFormBean" table="userprofile">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="profileId" type="java.lang.Long">
+			<column name="profileid" />
+		</property>
+		<property name="userProfileId" type="java.lang.Long">
+			<column name="userprofileid" />
+		</property>
+		<property name="fullName" type="java.lang.String">
+			<column name="fullname" />
+		</property>
+		<property name="genderId" type="java.lang.Long">
+			<column name="genderid" />
+		</property>
+		<property name="maritalStatusId" type="java.lang.Long">
+			<column name="maritalstatusid" />
+		</property>
+		<property name="dob" type="java.util.Date">
+			<column name="dob" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="email" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" />
+		</property>
+		<property name="passwordHash" type="java.lang.String">
+			<column name="passwordHash" />
+		</property>
+		<property name="mobile" type="java.lang.Long">
+			<column name="mobile" />
+		</property>
+		<property name="heightId" type="java.lang.Long">
+			<column name="heightid" />
+		</property>
+		<property name="educationId" type="java.lang.Long">
+			<column name="educationid" />
+		</property>
+		<property name="occupationId" type="java.lang.Long">
+			<column name="occupationid" />
+		</property>
+		<property name="religionId" type="java.lang.Long">
+			<column name="religionid" />
+		</property>
+		<property name="cityId" type="java.lang.Long">
+			<column name="cityid" />
+		</property>
+		<property name="stateId" type="java.lang.Long">
+			<column name="stateid" />
+		</property>
+		<property name="countryId" type="java.lang.Long">
+			<column name="countryid" />
+		</property>
+		<property name="aboutYou" type="java.lang.String">
+			<column name="aboutyou" />
+		</property>
+		<property name="profilePictureId" type="java.lang.Long">
+			<column name="profilepictureid" />
+		</property>
+		<property name="birthHoroScopePhotoId" type="java.lang.Long">
+			<column name="birthhoroscopephotoid" />
+		</property>
+		<property name="roleId" type="java.lang.Long">
+			<column name="roleid" />
+		</property>
+		<property name="statusId" type="java.lang.Long">
+			<column name="statusid" />
+		</property>
+		<property name="createdBy" type="java.lang.Long">
+			<column name="createdby" />
+		</property>
+		<property name="createdDate" type="java.util.Date">
+			<column name="createddate" />
+		</property>
+		<property name="updatedBy" type="java.lang.Long">
+			<column name="updatedby" />
+		</property>
+		<property name="updatedDate" type="java.util.Date">
+			<column name="updateddate" />
+		</property>
+	</class>
+</hibernate-mapping>

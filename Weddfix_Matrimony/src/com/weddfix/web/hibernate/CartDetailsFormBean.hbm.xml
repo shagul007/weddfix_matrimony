@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2013 7:39:35 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.weddfix.web.formbean.CartDetailsFormBean" table="cartdetails">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="profileId" type="java.lang.Long">
+			<column name="profileid" />
+		</property>
+		<property name="userId" type="java.lang.Long">
+			<column name="userid" />
+		</property>
+		<property name="planId" type="java.lang.Long">
+			<column name="planid" />
+		</property>
+		<property name="planType" type="java.lang.String">
+            <column name="plantype" />
+        </property>
+        <property name="statusId" type="java.lang.Long">
+			<column name="statusid" />
+		</property>
+		<property name="createdBy" type="java.lang.Long">
+            <column name="createdby" />
+        </property>
+        <property name="createdDate" type="java.sql.Timestamp">
+            <column name="createddate" />
+        </property>
+        <property name="updatedBy" type="java.lang.Long">
+            <column name="updatedby" />
+        </property>
+        <property name="updatedDate" type="java.sql.Timestamp">
+            <column name="updateddate" />            
+        </property>
+	</class>
+</hibernate-mapping>

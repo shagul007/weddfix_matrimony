@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2013 7:39:35 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.weddfix.web.formbean.AccountDetailsFormBean" table="accountdetails">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="profileId" type="java.lang.Long">
+			<column name="profileid" />
+		</property>
+		<property name="userId" type="java.lang.Long">
+			<column name="userid" />
+		</property>
+		<property name="accountType" type="java.lang.Long">
+			<column name="accounttype" />
+		</property>
+		<property name="deactivateProfileDays" type="java.lang.Long">
+			<column name="deactivateprofiledays" />
+		</property>
+		<property name="deactivatedProfileDate" type="java.util.Date">
+			<column name="deactivatedprofiledate" />
+		</property>
+		<property name="activateProfileDate" type="java.util.Date">
+			<column name="activateprofiledate" />
+		</property>
+		<property name="isProfileActive" type="java.lang.Boolean">
+            <column name="isprofileactive" />
+        </property>
+		<property name="deleteProfileReason" type="java.lang.String">
+			<column name="deleteprofilereason" />
+		</property>
+		<property name="isProfileDeleted" type="java.lang.Boolean">
+            <column name="isprofiledeleted" />
+        </property>
+        <property name="showMyProfilePicture" type="java.lang.Boolean">
+			<column name="showmyprofilepicture" />
+		</property>
+		<property name="showMyMobileNumber" type="java.lang.Boolean">
+            <column name="showmymobilenumber" />
+        </property>
+        <property name="showMyEmailId" type="java.lang.Boolean">
+            <column name="showmyemailid" />
+        </property>
+        <property name="verifyMobileNumber" type="java.lang.String">
+			<column name="verifymobilenumber" />
+		</property>
+		<property name="verifyEmailId" type="java.lang.String">
+			<column name="verifyemailid" />
+		</property>
+		<property name="verifyedMobileNumber" type="java.lang.Boolean">
+            <column name="verifyedmobilenumber" />
+        </property>
+        <property name="verifyedEmailId" type="java.lang.Boolean">
+			<column name="verifyedemailid" />
+		</property>
+		<property name="emailCount" type="java.lang.Long">
+			<column name="emailcount" />
+		</property>
+		<property name="mobileCount" type="java.lang.Long">
+            <column name="mobilecount" />
+        </property>
+        <property name="videoCallCount" type="java.lang.Long">
+            <column name="videocallcount" />
+        </property>
+        <property name="status" type="java.lang.Long">
+			<column name="status" />
+		</property>
+		<property name="createdBy" type="java.lang.Long">
+            <column name="createdby" />
+        </property>
+        <property name="createdDate" type="java.sql.Timestamp">
+            <column name="createddate" />
+        </property>
+        <property name="updatedBy" type="java.lang.Long">
+            <column name="updatedby" />
+        </property>
+        <property name="updatedDate" type="java.sql.Timestamp">
+            <column name="updateddate" />            
+        </property>
+        <property name="transactionId" type="java.lang.String">
+			<column name="transactionid" />
+		</property>
+		<property name="transactionStatus" type="java.lang.String">
+			<column name="transactionstatus" />
+		</property>
+	</class>
+</hibernate-mapping>
